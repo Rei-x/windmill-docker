@@ -94,6 +94,19 @@ services:
     expose:
       - 3002
 
+  caddy:
+    image: caddy-custom:2.4.5-alpine
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    expose:
+      - 80
+      #- 443:443 # Uncomment to enable HTTPS handling by Caddy
+    environment:
+      - BASE_URL=":80"
+      #- BASE_URL=mydomain.com # Uncomment and comment line above to enable HTTPS handling by Caddy
+
 volumes:
   db_data: null
   worker_dependency_cache: null
