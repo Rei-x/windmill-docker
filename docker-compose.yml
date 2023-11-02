@@ -95,11 +95,12 @@ services:
       - 3002
 
   caddy:
-    image: caddy-custom:2.4.5-alpine
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: caddy:2.5.2-alpine
     restart: unless-stopped
+
+    # Configure the mounted Caddyfile and the exposed ports or use another reverse proxy if needed
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
     expose:
       - 80
       #- 443:443 # Uncomment to enable HTTPS handling by Caddy
