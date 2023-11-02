@@ -12,8 +12,8 @@ services:
     expose:
       - 5432
     environment:
-      POSTGRES_PASSWORD: changeme
-      POSTGRES_DB: windmill
+      - POSTGRES_PASSWORD=changeme
+      - POSTGRES_DB=windmill
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
