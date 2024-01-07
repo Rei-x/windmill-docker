@@ -32,7 +32,7 @@ services:
 
   windmill_worker:
     build:
-      context: ./path/to/dockerfile
+      context: ./Dockerfile
       args:
         WM_IMAGE: ghcr.io/windmill-labs/windmill:main
     pull_policy: always
