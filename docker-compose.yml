@@ -38,6 +38,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - MODE=worker
       - WORKER_GROUP=default
+      - INIT_SCRIPT
     depends_on:
       db:
         condition: service_healthy
