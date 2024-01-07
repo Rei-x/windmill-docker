@@ -2,9 +2,6 @@ version: "3.7"
 
 services:
   db:
-    deploy:
-      # To use an external database, set replicas to 0 and set DATABASE_URL to the external database url in the .env file
-      replicas: 1
     image: postgres:14
     restart: unless-stopped
     volumes:
@@ -23,8 +20,6 @@ services:
   windmill_server:
     image: ${WM_IMAGE}
     pull_policy: always
-    deploy:
-      replicas: 1
     restart: unless-stopped
     expose:
       - 8000
@@ -38,12 +33,6 @@ services:
   windmill_worker:
     image: ${WM_IMAGE}
     pull_policy: always
-    deploy:
-      replicas: 3
-      resources:
-        limits:
-          cpus: "1"
-          memory: 2048M
     restart: unless-stopped
     environment:
       - DATABASE_URL=${DATABASE_URL}
@@ -63,12 +52,6 @@ services:
     # Use ghcr.io/windmill-labs/windmill-ee:main for the ee
     image: ${WM_IMAGE}
     pull_policy: always
-    deploy:
-      replicas: 2
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 128M
     restart: unless-stopped
     environment:
       - DATABASE_URL=${DATABASE_URL}
