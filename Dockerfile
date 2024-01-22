@@ -9,5 +9,6 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt-get update -y
 RUN apt install nodejs libnss3-dev libatk1.0-0 libatk-bridge2.0-0 libcups2-dev libdrm-dev libxkbcommon-dev libxcomposite-dev libxdamage-dev libxrandr-dev libgbm-dev libpango-1.0 libcairo-dev libasound-dev -y
 RUN npm install -g puppeteer -y
+RUN npx -y playwright install --with-deps
 
 CMD ["windmill"]
